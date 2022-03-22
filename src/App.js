@@ -1,5 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
+import data from './data';
 import { useEffect } from 'react';
 
 const REACT_APP_GIPHY_KEY = process.env.REACT_APP_GIPHY_KEY;
@@ -15,15 +15,27 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
+      <div id="discography">
+        <h1>Homework 2-1</h1>
+        <h3>
+          <span className="lead solid-color">Studio</span> <span>Album</span>
+        </h3>
+        <section>
+          <div className="album-section">
+            <div className="album">
+              <img src="https://i.scdn.co/image/ab67616d00001e02e8b066f70c206551210d902b" className="album-img" />
+              <div className="album-overlay">
+                <div className="release-date">{data.album.release_date}</div>
+                <div className="album-title">{data.album.album_type}</div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <h3>{data.artists[0].name}</h3>
+        <h4>{data.album.name}</h4>
+        <br />
+        <button>Select</button>
+      </div>
     </div>
   );
 }
