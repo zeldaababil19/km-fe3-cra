@@ -1,6 +1,10 @@
 import './App.css';
 import data from './data';
 import { useEffect } from 'react';
+import Title from './components/Title';
+import Album from './components/Album';
+import Song from './components/Song';
+import Button from './components/CustomButton';
 
 const REACT_APP_GIPHY_KEY = process.env.REACT_APP_GIPHY_KEY;
 const REACT_APP_SPOTIFY = process.env.REACT_APP_SPOTIFY;
@@ -12,29 +16,25 @@ function App() {
     console.log('spotify client id');
     console.log(REACT_APP_SPOTIFY);
   }, []);
+  const title = {
+    titlename: 'Homework 2-2',
+    studio: 'Queen',
+    album: 'Studio',
+  };
 
+  const button = {
+    buttonname: 'Go to Spotify',
+  };
+  const image = {
+    imagedata: 'https://i.scdn.co/image/ab67616d00001e02e8b066f70c206551210d902b',
+  };
   return (
     <div className="App">
       <div id="discography">
-        <h1>Homework 2-1</h1>
-        <h3>
-          <span className="lead solid-color">Studio</span> <span>Album</span>
-        </h3>
-        <section>
-          <div className="album-section">
-            <div className="album">
-              <img src="https://i.scdn.co/image/ab67616d00001e02e8b066f70c206551210d902b" className="album-img" />
-              <div className="album-overlay">
-                <div className="release-date">{data.album.release_date}</div>
-                <div className="album-title">{data.album.album_type}</div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <h3>{data.artists[0].name}</h3>
-        <h4>{data.album.name}</h4>
-        <br />
-        <button>Select</button>
+        <Title title={title.titlename} studio={title.studio} album={title.album} />
+        <Album image={image.imagedata} rilisDate={data.album.release_date} albumType={data.album.name} />
+        <Song artist={data.artists[0].name} songTitle={data.album.name} songRelease={data.album.release_date} />
+        <Button buttonName={button.buttonname} url={data.external_urls.spotify} />
       </div>
     </div>
   );
